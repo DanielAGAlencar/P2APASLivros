@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <ul>
+        {% for livro in livros %}
+            <a href="{% url 'update_livro' livro.id %}">
+                <li> {{ livro.nome }} - {{livro.ano_publicacao}} - {{ livro.ed }} -
+                    {{livro.n_paginas}} - {{livro.escritor}} - {{livro.editora}} </li>
+            </a>
+        {% endfor %}
+    </ul>
+
+    <a class="btn btn-primary" href="{% url 'create_livro' %}">Novo</a>
+{% endblock %}

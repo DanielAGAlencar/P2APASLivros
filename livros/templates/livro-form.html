@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+      <form method="POST" novalidate>
+        {% csrf_token %}
+          <div class="form-group">
+            {{ form.nome |as_crispy_field  }}
+          </div>
+          <div class="form-group">
+              {{ form.ano_publicacao |as_crispy_field  }}
+          </div>
+          <div class="form-group">
+            {{ form.ed |as_crispy_field }}
+          </div>
+          <div class="form-group">
+              {{ form.n_paginas |as_crispy_field  }}
+          </div>
+          <div class="form-group">
+              {{ form.escritor |as_crispy_field  }}
+          </div>
+          <div class="form-group">
+              {{ form.editora |as_crispy_field  }}
+          </div>
+          <button type="submit" class="btn btn-success">Salvar</button>
+            {% if livro %}
+                 <a href="{% url 'delete_livro' livro.id %}" class="btn btn-danger">Excluir</a>
+            {% endif %}
+          <a class="btn btn-light" href="{% url 'list_livro' %}">Cancelar</a>
+      </form>
+{% endblock %}
